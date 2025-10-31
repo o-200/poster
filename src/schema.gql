@@ -25,14 +25,21 @@ type Post {
   isDeleted: Boolean!
 }
 
+type Comment {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
   users: [User!]!
   posts: [Post!]!
+  comments: [Comment!]!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   createPost(createPostInput: CreatePostInput!): Post!
+  createComment(createCommentDto: CreateCommentInput!): Comment!
 }
 
 input CreateUserInput {
@@ -45,4 +52,10 @@ input CreateUserInput {
 input CreatePostInput {
   content: String!
   authorId: String!
+}
+
+input CreateCommentInput {
+  content: String!
+  authorId: String!
+  postId: String!
 }

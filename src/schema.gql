@@ -30,16 +30,23 @@ type Comment {
   exampleField: Int!
 }
 
+type Reaction {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
   users: [User!]!
   posts: [Post!]!
   comments: [Comment!]!
+  reactions: [Reaction!]!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   createPost(createPostInput: CreatePostInput!): Post!
   createComment(createCommentDto: CreateCommentInput!): Comment!
+  createReaction(createReactionDto: CreateReactionDto!): Reaction!
 }
 
 input CreateUserInput {
@@ -57,5 +64,11 @@ input CreatePostInput {
 input CreateCommentInput {
   content: String!
   authorId: String!
+  postId: String!
+}
+
+input CreateReactionDto {
+  type: String!
+  userId: String!
   postId: String!
 }

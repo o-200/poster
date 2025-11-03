@@ -22,6 +22,7 @@ type Post {
   content: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  author: User!
   isDeleted: Boolean!
 }
 
@@ -58,7 +59,7 @@ input CreateUserInput {
 
 input CreatePostInput {
   content: String!
-  authorId: String!
+  authorId: ID!
 }
 
 input CreateCommentInput {

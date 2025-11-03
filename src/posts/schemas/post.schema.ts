@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { User } from 'src/users/schemas/user.schema';
 
 @Schema()
@@ -16,8 +16,8 @@ export class Post extends Document {
   @Prop({ type: Boolean, default: false })
   isDeleted: boolean;
 
-  @Prop({ type: String, ref: 'User', required: true })
-  author: User;
+  @Prop({ type: Types.ObjectId, ref: User.name, required: true })
+  author: Types.ObjectId;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

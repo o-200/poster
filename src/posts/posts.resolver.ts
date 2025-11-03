@@ -8,7 +8,7 @@ import { PostsService } from './posts.service';
 import { Post } from './entities/post.entity';
 import { CreatePostInput } from './dto/create-post.input';
 
-@Resolver(of => Post)
+@Resolver(() => Post)
 export class PostsResolver {
   constructor(
     private readonly postsService: PostsService
@@ -21,7 +21,8 @@ export class PostsResolver {
 
   @Mutation(returns => Post)
   async createPost(
-  @Args('createPostInput') createPostInput: CreatePostInput) {
+    @Args('createPostInput') createPostInput: CreatePostInput
+  ) {
     return this.postsService.create(createPostInput);
   }
 }

@@ -1,10 +1,10 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, ID } from '@nestjs/graphql';
 
 @InputType()
 export class CreatePostInput {
   @Field()
   content: string;
 
-  @Field()
+  @Field(() => ID)
   authorId: string;
 }

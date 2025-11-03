@@ -27,8 +27,13 @@ type Post {
 }
 
 type Comment {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: String!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  author: User!
+  post: Post!
+  isDeleted: Boolean!
 }
 
 type Reaction {
@@ -64,8 +69,8 @@ input CreatePostInput {
 
 input CreateCommentInput {
   content: String!
-  authorId: String!
-  postId: String!
+  authorId: ID!
+  postId: ID!
 }
 
 input CreateReactionDto {

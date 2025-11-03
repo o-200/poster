@@ -2,13 +2,16 @@ import { Module } from '@nestjs/common';
 import { CommentsService } from './comments.service';
 import { CommentsResolver } from './comments.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Comment } from './entities/comment.entity';
-import { CommentSchema } from './schemas/comment.schema';
+import { Comment, CommentSchema } from './schemas/comment.schema';
+import { Post, PostSchema } from 'src/posts/schemas/post.schema';
+import { User, UserSchema } from 'src/users/schemas/user.schema';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: Comment.name, schema: CommentSchema },
+      { name: Post.name, schema: PostSchema },
+      { name: User.name, schema: UserSchema },
     ]),
   ],
   providers: [CommentsResolver, CommentsService],
